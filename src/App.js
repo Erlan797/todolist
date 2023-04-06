@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react';
 import './App.css';
+import {AiFillCheckCircle,AiFillCloseCircle} from 'react-icons/ai'
 
 function App() {
   const [text, setText] = useState('');
@@ -26,8 +27,8 @@ function App() {
   }
   return (
     <div className="App">
+      <h1 id='main-text'>Todo List</h1>
       <div id="texter">
-      <h2>Todo List</h2>
       <input
         ref={inputTask}
         placeholder='Text here'
@@ -42,8 +43,8 @@ function App() {
           return (
             <div className='task'>
               <li key={key}>{val.task}</li>
-              <button onClick={() => completedTask(val.task)}>Completed</button>
-              <button onClick={() => deleteTask(val.task)}>X</button>
+              <div class='completed' onClick={() => completedTask(val.task)}><AiFillCheckCircle style={{width:'50px',height:'50px'}}/></div>
+              <div class='completed' onClick={() => deleteTask(val.task)}><AiFillCloseCircle style={{width:'50px',height:'50px'}}/></div>
               {val.completed ?
                 (<h1>Task Completed</h1>) :
                 (<h1>Task not Completed</h1>)}
